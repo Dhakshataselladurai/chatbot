@@ -9,12 +9,9 @@ from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from openai import OpenAI
 
-# Load environment variables
-load_dotenv()
-
 # OpenRouter client
 client = OpenAI(
-    api_key=os.getenv("OPENROUTER_API_KEY"),
+    api_key=st.secrets["OPENROUTER_API_KEY"],
     base_url="https://openrouter.ai/api/v1"
 )
 
@@ -48,9 +45,9 @@ def load_vectorstore():
     docs = text_splitter.create_documents([text])
 
     embeddings = OpenAIEmbeddings(
-        api_key=os.getenv("OPENROUTER_API_KEY"),
-        base_url="https://openrouter.ai/api/v1"
-    )
+    api_key=st.secrets["OPENROUTER_API_KEY"],
+    base_url="https://openrouter.ai/api/v1"
+)
 
     vectorstore = FAISS.from_documents(docs, embeddings)
 
