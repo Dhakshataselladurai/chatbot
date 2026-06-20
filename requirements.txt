@@ -2,7 +2,6 @@ streamlit
 pdfplumber
 langchain
 langchain-community
-langchain-openai
 openai
 faiss-cpu
-tiktoken
+sentence-transformers
